@@ -29,11 +29,11 @@ def find_order(N, check, cnt, r, c):  # 배열 전체 크기, 몇번째 확인, 
             find_order(N, check-1, cnt, r - 2**(check-1), c)
 
     else:  # 1, 2 사분면
-        if c > mid:  # 2 사분면
+        if c > mid:  # 1 사분면
             cnt += one_range
             find_order(N, check-1, cnt, r, c - 2**(check-1))
 
-        else:  # 1 사분면
+        else:  # 2 사분면
             find_order(N, check-1, cnt, r, c)
 
 

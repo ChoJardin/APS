@@ -1,4 +1,5 @@
-def combi(idx, sidx):
+# 중복조합
+def combi_rep(idx, sidx):
 
     if sidx == M:
         print(*sel)
@@ -6,14 +7,13 @@ def combi(idx, sidx):
 
     for i in range(idx, N):
         sel[sidx] = arr[i]
-        combi(i, sidx+1)
+        combi_rep(i, sidx+1)
 
 
 N, M = map(int, input().split())
-
 arr = list(map(int, input().split()))
 arr.sort()
 sel = [0] * M
 
-combi(0, 0)
+combi_rep(0, 0)
 

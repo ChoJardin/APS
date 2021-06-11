@@ -6,6 +6,8 @@ def sequence(idx):
 
     for i in range(len(arr)):
         if cnt[arr[i]]:
+            # print(cnt)
+            # print(sel)
             sel[idx] = arr[i]
             cnt[arr[i]] -= 1
             sequence(idx+1)
@@ -18,8 +20,10 @@ arr = list(map(int, input().split()))
 cnt = {}
 for each in arr:
     cnt[each] = cnt.get(each, 0) + 1
+# print(cnt)
 # 중복 제거 후 정렬
 arr = sorted(list(set(arr)))
+# print(arr)
 sel = [0] * M
 
 sequence(0)

@@ -6,6 +6,7 @@ from collections import deque
 
 def ac():
     global arr
+
     # 배열이 뒤집어졌는지 확인
     is_reversed = False
     # 함수를 각각 확인하면서

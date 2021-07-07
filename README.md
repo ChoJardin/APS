@@ -91,4 +91,5 @@
 | 21.06.15 | [BOJ_5430_AC](./BOJ/BOJ_5430_AC.py)                          |
 | 21.06.28 | [BOJ_1149_RGB거리](BOJ/BOJ_1149_RGB거리.py)                  |
 | 21.07.07 | [BOJ_1260_DFS와 BFS](BOJ/BOJ_1260_DFS와BFS.py)               |
+| 21.07.07 | [BOJ_2178_미로탐색](BOJ/BOJ_2178_미로탐색.py)                |
 

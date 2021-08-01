@@ -14,34 +14,29 @@ for _ in range(N-1):
     parent[u] = ([v, w])
     child[v].append(u)
 
-# 자식 가지고 있는 개수 만큼 이중리스트 길이를 만들어줍니다..
-# 자식이 둘이 아닐 수 있음 주의!!!
-length = [[0] * len(child[i]) for i in range(N+1)]
+# 나를 정점으로 자식노드에서 나한테 오는 길이 저장할 리스트
+# 자식은 둘이 아닐 수 있음 주의!!!
+length = [[0] * 2 for i in range(N+1)]
 
-# 뒤에가 리프일 가능성이 크니까.. 뒤부터 확인해서 앞으로 가보겠습니다..
+# 뒤에가 리프니까.. 뒤부터 확인해서 앞으로 가보겠습니다..
 for i in range(N, 1, -1):
     # 부모노드
     p = parent[i][0]
 
-    # 몇번째 자식인지 확인
-    for j in range(len(child[p])):
-        if child[p][j] == i:
-            break
+    # 부모노드에 자기의 최댓값 + 가중치를 저장
+    length[p].append(max(length[i]) + parent[i][1])
+    # 어차피 최댓값 2개만 가지고 있으면 되는 걸..!
+    length[p] = sorted(length[p], reverse=True)[:2]
 
-    # 단말노드인 경우 -> [0] 으로 값을 초기화
-    if not length[i]:
-        length[i] = [0]
+print(max(map(sum, length)))
 
-    # 부모노의에 자기의 최댓값 + 가중치를 저장
-    length[p][j] = max(length[i]) + parent[i][1]
 
-max_length = []
-for i in range(N+1):
-    # 자식들 중 최댓값 2개를 더한 값 저장
-    max_length.append(sum(sorted(length[i], reverse=True)[:2]))
-
-print(max(max_length))
-
+# 처음에는 노드의 자식들의 길이를 하나씩 다 저장하고 있었는데,
+# 그러면 쓸데없는 반복
+# -> 1. 몇번째 자식인지 알려고 for문 돌기
+# -> 2. 최댓값 2개 뽑으려고 다시 for문 돌기
+# 등등이 많아져서 시간이 매우 오래 걸렸습니다.
+# 결국 지름은 자식 2개만 필요하니까 최댓값 2개만 가지고 있으면 되는 것이었어요.
 
 
 

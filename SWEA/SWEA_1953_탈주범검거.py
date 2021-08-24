@@ -1,3 +1,6 @@
+# import sys
+# sys.stdin = open('SWEA_1953_input.txt', 'r')
+
 from collections import deque
 
 def bfs(r, c, L):
@@ -9,7 +12,7 @@ def bfs(r, c, L):
     # 이동했으면 +1 해주고 마지막에 값 return
 
     # 현재 위치에서 이동가능한 구조가 어떻게 되는지 알아야 합니다.
-    # 1 -> 어느 것이든 가능
+    # 1 -> 위 2, 5, 6/ 아래 2, 4, 7/ 왼쪽 3, 4, 5/ 오른쪽 3, 6, 7
     # 2 -> 아래 4, 7/ 위 5, 6
     # 3 -> 왼쪽 4, 5/ 오른쪽 6, 7
     # 4 -> 위 2, 5, 6/ 오른쪽 3, 6, 7
@@ -18,7 +21,7 @@ def bfs(r, c, L):
     # 7 -> 위 2, 5, 6/ 왼쪽 3, 4, 5
     # 각자 현재 위치에서 이동 가능한 구조 -> 상하좌우 기준
     possibles = [[],  # 0
-                 [[i for i in range(1, 8)] for _ in range(4)],  # 1
+                 [[1, 2, 5, 6], [1, 2, 4, 7], [1, 3, 4, 5], [1, 3, 6, 7]],  # 1
                  [[1, 2, 5, 6], [1, 2, 4, 7], [], []],  # 2
                  [[], [], [1, 3, 4, 5], [1, 3, 6, 7]],  # 3
                  [[1, 2, 5, 6], [], [], [1, 3, 6, 7]],  # 4
@@ -81,4 +84,3 @@ for tc in range(T):
     underground = [list(map(int, input().split())) for _ in range(N)]
 
     print('#{} {}'.format(tc + 1, bfs(R, C, L)))
-    for _ in underground: print(_)
